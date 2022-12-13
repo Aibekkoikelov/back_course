@@ -1,9 +1,9 @@
-console.log('mains.js is connected');
 
-//create simple web server
+
+// Создание сервар с импользованием http
 
 const http = require('http')
-const Logger = require("nodemon/lib/utils/log");
+
 
 const server = http.createServer((req, res) => {
     if (req.method === 'GET') {
@@ -39,16 +39,12 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(3000, () => {
-    Logger('Server is running..1.')
-    // console.log('Server is running...')
+    console.log('Server is running...')
 })
 
 
-//all req methods
+// Все методы Request
 
-// const http = require('http')
-//
-// const server = http.createServer((req, res) => {
     // req.method() - get, post, put, delete, etc
     // req.url() - юрл
     // req.headers() - заголовки
@@ -105,7 +101,7 @@ server.listen(3000, () => {
     // res.writeHead() - устанавливает заголовок
 
 
-    // all res.on methods
+    //  Все методы Response
     // res.on('close') - закрытие
     // res.on('finish') - завершение
     // res.on('pipe') - пайп

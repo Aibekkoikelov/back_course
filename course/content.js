@@ -4,7 +4,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-
+ // Сервер с отправкой html файла
 
 const server = http.createServer((req, res) => {
     if(req.method === "GET" ){
@@ -27,6 +27,6 @@ const server = http.createServer((req, res) => {
     }
 })
 
-server.listen(3000, () => {
+server.listen(4000, () => {
     console.log('Server is running...')
 })
