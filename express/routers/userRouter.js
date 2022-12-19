@@ -1,5 +1,5 @@
-import {body} from "express-validator";
-
+const  {body} = require("express-validator")
+const authMiddleware = require('../middleware/auth-middleware');
 const Router = require('express').Router; // Импортируем роутер из express
     const router = new Router(); // Создаем экземпляр роутера
 
@@ -9,7 +9,7 @@ const Router = require('express').Router; // Импортируем роутер
     // для контролеров мы создаем отдельные файлы, чтобы не засорять роутер
  // В контороллере описаны все методы для работы с пользователями
     router.get('/', userController.getAllUsers); // Первый параметр это путь, второй это метод который будет вызываться при запросе на этот путь
-    router.get('/:id', userController.getOneUser); // Получаем одного пользователя
+    router.get('/:id',authMiddleware, userController.getOneUser); // Получаем одного пользователя
     router.post('/',body("email").isEmail(), body("password").isLength({min: 6}), userController.registration); // Создаем пользователя  и валидируем данные с помощью библиотеки express-validator
     router.put('/', userController.login); // вход пользователя
 
@@ -18,7 +18,7 @@ const Router = require('express').Router; // Импортируем роутер
 
 
 
- export default router; // Экспортируем роутер по умолчанию также можно и именнованный экспорт
+ module.exports =  router; // Экспортируем роутер по умолчанию также можно и именнованный экспорт
 
 
 // для валиадции испольуем библиотеку express-validator
