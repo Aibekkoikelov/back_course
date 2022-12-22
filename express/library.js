@@ -11,7 +11,9 @@
 // npm i nodemon --save-dev // nodemon - это библиотека для автоматического перезапуска сервера при изменении кода
 // npm i swagger-ui-express --save // swagger-ui-express - это библиотека для создания документации API
 // npm i express-validator --save // express-validator - это библиотека для валидации данных
-
+// npm i sequelize --save // sequelize - это библиотека для работы с базой данных
+// npm i dotenv --save // dotenv - это библиотека для работы с переменными окружения
+// npm i cross-env --save-dev // cross-env - это библиотека для установки переменных окружения
 
 
 
@@ -49,21 +51,23 @@
 // import { User } from './users/users.model';
 // import { UsersModule } from './users/users.module';
 
-// @Module({
-//   imports: [
-//     TypeOrmModule.forRoot({
-//       type: 'postgres',
-//       host: 'localhost',
-//       port: 5432,
-//       username
-//       password
-//       database
-//       autoLoadEntities: true,
-//      entities: [User],
-//        migrations: ['migration/*.js'],
-//       synchronize: true,
+
+
+// @Module({ // декоратор модуля NestJS
+//   imports: [ // импорт модулей
+//     TypeOrmModule.forRoot({ // конфигурация подключения к базе данных
+//       type: 'postgres', // тип базы данных
+//       host: 'localhost', // хост базы данных
+//       port: 5432, // порт базы данных
+//       username // имя пользователя
+//       password // пароль
+//       database // имя базы данных
+//       autoLoadEntities: true, // автоматическая загрузка сущностей
+//      entities: [User], // сущности
+//        migrations: ['migration/*.js'], // миграции
+//       synchronize: true, // синхронизация сущностей с базой данных
 //     }),
-//     UsersModule,
+//     UsersModule, // импорт модуля пользователей
 //   ],
 // })
 // export class AppModule {}
@@ -132,3 +136,5 @@
 //3. в терминале ввести команду docker-compose up -d --build // запускаем контейнеры в фоновом режиме и собираем их заново
 
 //4. в терминале ввести команду docker-compose down // останавливаем контейнеры
+
+

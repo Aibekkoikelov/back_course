@@ -3,6 +3,8 @@ const path = require('path');  // Подключаем path (чтобы рабо
 const cookieParser = require('cookie-parser');  // Подключаем cookie-parser (чтобы работать с куками)
 const app = express();  // Создаем экземпляр приложение
 
+const db = require('./models');  // Подключаем модели
+
 // Подключаем необходимые мидлвары (промежуточные обработчики)
 app.use(express.static(path.join(__dirname, 'public')));  // Подключаем статические файлы
 app.use(express.urlencoded({extended: true}));  // Подключаем body-parser для работы с формами
@@ -34,8 +36,10 @@ const router = require('./routers/userRouter'); // импортируем роу
 app.use("/users", router)  // ПЕрвый параметр - префикс( префикс устанавливает перед всеми роутами данного роута), второй - сам роут )
 
 
-
-
+// Запуск базы данных
+db.sequelize.sync().then(() => {  // Синхронизируем модели с базой данных
+        console.log('Server has been started');  // Выводим сообщение в консоль
+    })
 
 
 // Подключение swagger для документации API Express
