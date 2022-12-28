@@ -86,3 +86,7 @@
 
 // typeorm migration:create -n Migration -d src/migrations -c 1611111111111 -e ts -f 1611111111111-Migration.ts - создает миграцию с именем Migration в папке src/migrations с датой 1611111111111 и расширением файла ts и именем файла 1611111111111-Migration.ts
 
+
+
+// установка typeorm cli
+// npm install -g typeorm
